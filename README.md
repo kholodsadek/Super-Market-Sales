@@ -1,38 +1,77 @@
-# Super-Market-Sales
-## Description
+# 🛒 Supermarket Sales – Data Wrangling & KPI Analysis
 
-This project analyzes the effectiveness of marketing promotions using key performance indicators (KPIs) such as *Promotion Effectiveness*. The dataset used includes transactional data from various branches, with information about product sales, customer types, and pricing. To ensure the quality and accuracy of the data, a series of data cleaning steps were performed, and additional columns were created to enhance the analysis.
+## 📌 Project Description
 
-### Data Cleaning
+This project analyzes supermarket transactional data to evaluate the **effectiveness of marketing promotions** using KPIs like **Promotion Effectiveness**, sales, and tax contribution. The dataset includes detailed records of sales across various branches, customer types, products, and payment methods.
 
-1. **NULL Values**:
-   - **Tax 5%**: 9 rows with missing values were replaced with a calculated value:  
-     `Tax = Total - (Price * Quantity)`.
-   - **Total**: 3 rows with missing values were replaced with a calculated value:  
-     `Total = (Price * Quantity) + Tax`.
+The goal was to clean the data, enrich it with new fields, and prepare it for business insights and dashboard reporting.
 
-2. **Currency Symbols**:
-   - **UnitPrice**: 5 rows had 'USD' as a suffix, which was removed, and the column was converted to a float data type.
+---
 
-3. **Customer Type**:
-   - 27 rows had non-standard entries, which were replaced with 'Normal'.
+## 🧹 Data Cleaning Summary
 
-4. **Time Format**:
-   - 1 row contained a time format in '8:30 PM'. All time formats were standardized to 'HH:MM AM/PM' (e.g., '01:27:00 PM').
+1. **NULL Values**
+   - `Tax 5%`: 9 missing rows were filled using `Tax = Total - (Price × Quantity)`
+   - `Total`: 3 missing rows were calculated as `Total = (Price × Quantity) + Tax`
 
-5. **Data Types**:
-   - **UnitPrice**: The column was initially of type object. It was converted to a float for accurate numerical analysis.
+2. **Currency Symbols**
+   - `UnitPrice`: Removed 'USD' from 5 rows and converted the column to float
 
-6. **Duplicate Rows**:
-   - 6 duplicate rows were identified and removed from the dataset.
+3. **Customer Type**
+   - 27 non-standard entries were replaced with `'Normal'`
 
-7. **Outliers**:
-   - **Quantity**: 3 outliers with negative values [-8, -7, -1] were found. These values were replaced with their absolute values.
-   - **Tax 5%**: 7 values were flagged as potential outliers but were found to be reasonable, so no changes were made.
-   - **Total**: 9 high values were flagged but retained after verification as they were not true outliers.
-   - **Rating**: 1 outlier (97) was corrected to 9.7 for accuracy.
+4. **Time Format**
+   - Standardized time to `HH:MM AM/PM` format (e.g., `08:30 PM` → `08:30:00 PM`)
 
-### New Columns
+5. **Data Types**
+   - `UnitPrice`: Converted from `object` to `float` for numerical analysis
 
-- **branch_city**: A new column was created to indicate the city of each branch. This column ensures that branches are correctly identified by their corresponding city names.
+6. **Duplicate Rows**
+   - Removed 6 duplicate records
 
+7. **Outliers**
+   - `Quantity`: Replaced negative values (e.g., -8, -7, -1) with their absolute values
+   - `Tax 5%`: 7 values reviewed; retained as valid
+   - `Total`: 9 flagged high values confirmed valid and kept
+   - `Rating`: Fixed one outlier (97) by correcting to `9.7`
+
+---
+
+## 🆕 New Features Created
+
+- **branch_city**: A derived column mapping each branch to its corresponding city, allowing more meaningful geographic analysis.
+
+---
+
+## 🛠️ Tools Used
+
+- **Python (Pandas, NumPy)** – Data wrangling, cleaning, and transformations
+- **Jupyter Notebook** – Exploratory analysis and code documentation
+- **Power BI** *(planned)* – For visualizing KPIs and building interactive dashboards
+
+---
+
+## 🎯 Key Objectives
+
+- Improve data quality for analysis
+- Handle inconsistencies and errors in real-world data
+- Prepare the dataset for building KPIs and dashboards
+- Explore customer behavior and sales trends by location and customer type
+
+---
+
+## 📅 Timeline
+
+- **Project Type**: Capstone Project – NTI DEY Diploma  
+- **Date**: September 2024
+
+---
+
+## 📚 What I Learned
+
+- Handling real-world messy data with missing values, mixed formats, and outliers
+- Applying robust data cleaning techniques using Pandas
+- Creating new meaningful features from existing data
+- Preparing clean datasets for BI tools and decision-making dashboards
+
+---
